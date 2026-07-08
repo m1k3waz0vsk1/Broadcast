@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { assetFilesForFormat } from "../src/lib/asset-library";
 
 const prisma = new PrismaClient();
 
@@ -145,20 +146,6 @@ const products = [
   },
 ];
 
-const assetLibrary: Record<string, string[]> = {
-  PNG: ["overlay-1080p.png", "overlay-4k.png"],
-  PSD: ["source-file.psd"],
-  "After Effects Template": ["ae-template.aep"],
-  "PNG Sequence": ["png-sequence.zip"],
-  "MOV with Alpha": ["render-alpha.mov"],
-  MP4: ["render.mp4"],
-  "OBS Overlay": ["obs-scene-collection.json"],
-  "OBS/vMix Overlay": ["obs-vmix-package.zip"],
-  "Stream Deck Icons": ["streamdeck-icons.zip"],
-  "Keynote & PowerPoint": ["deck.key", "deck.pptx"],
-  Keynote: ["deck.key"],
-};
-
 async function main() {
   console.log("Seeding categories…");
   const categoryMap: Record<string, string> = {};
@@ -203,7 +190,7 @@ async function main() {
     const existingAssets = await prisma.productAsset.findMany({ where: { productId: product.id } });
     if (existingAssets.length === 0) {
       for (const format of p.formats) {
-        const files = assetLibrary[format] ?? [`${format.toLowerCase().replace(/\s+/g, "-")}.zip`];
+        const files = assetFilesForFormat(format);
         for (const fileName of files) {
           await prisma.productAsset.create({
             data: {

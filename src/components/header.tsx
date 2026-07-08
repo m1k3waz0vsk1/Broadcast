@@ -55,6 +55,14 @@ export function Header() {
 
           {status === "authenticated" ? (
             <div className="flex items-center gap-3">
+              {session.user?.role === "ADMIN" && (
+                <Link
+                  href="/admin/products"
+                  className="text-sm text-accent-2 transition hover:text-foreground"
+                >
+                  Admin
+                </Link>
+              )}
               <Link
                 href="/account"
                 className="text-sm text-muted transition hover:text-foreground"
@@ -107,6 +115,11 @@ export function Header() {
             </Link>
             {status === "authenticated" ? (
               <>
+                {session?.user?.role === "ADMIN" && (
+                  <Link href="/admin/products" className="text-sm text-accent-2" onClick={() => setMenuOpen(false)}>
+                    Admin
+                  </Link>
+                )}
                 <Link href="/account" className="text-sm text-muted" onClick={() => setMenuOpen(false)}>
                   Account
                 </Link>
