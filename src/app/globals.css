@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --background: #08090d;
+  --surface: #101218;
+  --surface-2: #171a22;
+  --border: #24272f;
+  --foreground: #f4f5f7;
+  --muted: #9599a6;
+  --accent: #7c5cff;
+  --accent-2: #22d3ee;
+  --live: #ff3b5c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-live: var(--live);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card-glow {
+  box-shadow: 0 0 0 1px var(--border);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 0 1px var(--accent);
+  transform: translateY(-2px);
+}

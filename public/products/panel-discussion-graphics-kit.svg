@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg-paneldiscussiongraphicskit" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#201406"/>
+      <stop offset="100%" stop-color="#4a2e08"/>
+    </linearGradient>
+    <linearGradient id="bar-paneldiscussiongraphicskit" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#f5a623" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg-paneldiscussiongraphicskit)"/>
+  
+  <circle cx="413" cy="192" r="0.94" fill="white" fill-opacity="0.25"/><circle cx="592" cy="8" r="1.12" fill="white" fill-opacity="0.25"/><circle cx="623" cy="143" r="1.55" fill="white" fill-opacity="0.25"/><circle cx="634" cy="203" r="1.68" fill="white" fill-opacity="0.25"/><circle cx="281" cy="245" r="0.47" fill="white" fill-opacity="0.25"/><circle cx="128" cy="21" r="1.83" fill="white" fill-opacity="0.25"/><circle cx="548" cy="0" r="0.50" fill="white" fill-opacity="0.25"/><circle cx="764" cy="263" r="0.55" fill="white" fill-opacity="0.25"/><circle cx="784" cy="159" r="0.95" fill="white" fill-opacity="0.25"/><circle cx="437" cy="136" r="0.49" fill="white" fill-opacity="0.25"/><circle cx="164" cy="174" r="0.46" fill="white" fill-opacity="0.25"/><circle cx="647" cy="36" r="0.92" fill="white" fill-opacity="0.25"/><circle cx="236" cy="62" r="1.85" fill="white" fill-opacity="0.25"/><circle cx="495" cy="259" r="1.76" fill="white" fill-opacity="0.25"/><circle cx="44" cy="24" r="1.91" fill="white" fill-opacity="0.25"/><circle cx="590" cy="229" r="1.74" fill="white" fill-opacity="0.25"/><circle cx="679" cy="265" r="0.70" fill="white" fill-opacity="0.25"/><circle cx="579" cy="43" r="1.53" fill="white" fill-opacity="0.25"/><circle cx="670" cy="231" r="1.65" fill="white" fill-opacity="0.25"/><circle cx="488" cy="236" r="1.58" fill="white" fill-opacity="0.25"/><circle cx="37" cy="146" r="1.63" fill="white" fill-opacity="0.25"/><circle cx="588" cy="182" r="1.44" fill="white" fill-opacity="0.25"/><circle cx="671" cy="265" r="1.57" fill="white" fill-opacity="0.25"/><circle cx="793" cy="21" r="1.84" fill="white" fill-opacity="0.25"/><circle cx="189" cy="42" r="1.65" fill="white" fill-opacity="0.25"/><circle cx="104" cy="150" r="1.40" fill="white" fill-opacity="0.25"/><circle cx="580" cy="39" r="1.49" fill="white" fill-opacity="0.25"/><circle cx="142" cy="147" r="1.96" fill="white" fill-opacity="0.25"/><circle cx="252" cy="219" r="0.62" fill="white" fill-opacity="0.25"/><circle cx="305" cy="48" r="1.97" fill="white" fill-opacity="0.25"/><circle cx="481" cy="204" r="0.90" fill="white" fill-opacity="0.25"/><circle cx="449" cy="274" r="1.70" fill="white" fill-opacity="0.25"/><circle cx="785" cy="172" r="0.88" fill="white" fill-opacity="0.25"/><circle cx="291" cy="87" r="1.30" fill="white" fill-opacity="0.25"/><circle cx="782" cy="39" r="1.19" fill="white" fill-opacity="0.25"/><circle cx="373" cy="92" r="0.41" fill="white" fill-opacity="0.25"/><circle cx="234" cy="246" r="0.51" fill="white" fill-opacity="0.25"/><circle cx="757" cy="121" r="1.53" fill="white" fill-opacity="0.25"/><circle cx="418" cy="102" r="1.00" fill="white" fill-opacity="0.25"/><circle cx="657" cy="99" r="0.84" fill="white" fill-opacity="0.25"/>
+  
+  
+  
+  <rect x="40" y="40" width="46" height="46" rx="12" fill="white" fill-opacity="0.12"/>
+  <rect x="54" y="54" width="18" height="18" rx="4" fill="#f5a623"/>
+  <text x="40" y="382" font-family="Arial, sans-serif" font-size="14" letter-spacing="3" font-weight="700" fill="#f5a623">CONFERENCE</text>
+  <rect x="40" y="404" width="553" height="64" fill="url(#bar-paneldiscussiongraphicskit)" fill-opacity="0.5"/>
+  <text x="40" y="448" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="white">Panel Discussion Graphics Kit</text>
+  <rect x="40" y="460" width="120" height="4" fill="#f5a623"/>
+</svg>

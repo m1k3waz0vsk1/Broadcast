@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg-podcaststudiographicskit" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#201406"/>
+      <stop offset="100%" stop-color="#4a2e08"/>
+    </linearGradient>
+    <linearGradient id="bar-podcaststudiographicskit" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#f5a623" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg-podcaststudiographicskit)"/>
+  
+  <circle cx="632" cy="271" r="0.45" fill="white" fill-opacity="0.25"/><circle cx="17" cy="180" r="0.62" fill="white" fill-opacity="0.25"/><circle cx="1" cy="96" r="0.99" fill="white" fill-opacity="0.25"/><circle cx="339" cy="18" r="0.83" fill="white" fill-opacity="0.25"/><circle cx="175" cy="109" r="0.60" fill="white" fill-opacity="0.25"/><circle cx="698" cy="2" r="1.60" fill="white" fill-opacity="0.25"/><circle cx="186" cy="195" r="1.04" fill="white" fill-opacity="0.25"/><circle cx="421" cy="183" r="1.96" fill="white" fill-opacity="0.25"/><circle cx="116" cy="114" r="0.45" fill="white" fill-opacity="0.25"/><circle cx="192" cy="38" r="0.81" fill="white" fill-opacity="0.25"/><circle cx="17" cy="88" r="1.34" fill="white" fill-opacity="0.25"/><circle cx="165" cy="38" r="1.08" fill="white" fill-opacity="0.25"/><circle cx="577" cy="238" r="0.55" fill="white" fill-opacity="0.25"/><circle cx="288" cy="31" r="0.48" fill="white" fill-opacity="0.25"/><circle cx="43" cy="232" r="1.96" fill="white" fill-opacity="0.25"/><circle cx="741" cy="248" r="0.77" fill="white" fill-opacity="0.25"/><circle cx="30" cy="140" r="1.41" fill="white" fill-opacity="0.25"/><circle cx="107" cy="57" r="0.79" fill="white" fill-opacity="0.25"/><circle cx="346" cy="60" r="1.06" fill="white" fill-opacity="0.25"/><circle cx="129" cy="212" r="0.49" fill="white" fill-opacity="0.25"/><circle cx="152" cy="177" r="0.87" fill="white" fill-opacity="0.25"/><circle cx="395" cy="4" r="1.96" fill="white" fill-opacity="0.25"/><circle cx="654" cy="77" r="1.35" fill="white" fill-opacity="0.25"/><circle cx="151" cy="40" r="1.98" fill="white" fill-opacity="0.25"/><circle cx="724" cy="255" r="0.55" fill="white" fill-opacity="0.25"/><circle cx="569" cy="203" r="0.97" fill="white" fill-opacity="0.25"/><circle cx="527" cy="81" r="1.45" fill="white" fill-opacity="0.25"/><circle cx="579" cy="250" r="1.25" fill="white" fill-opacity="0.25"/><circle cx="260" cy="216" r="0.76" fill="white" fill-opacity="0.25"/><circle cx="556" cy="125" r="0.92" fill="white" fill-opacity="0.25"/><circle cx="606" cy="16" r="1.81" fill="white" fill-opacity="0.25"/><circle cx="530" cy="23" r="0.79" fill="white" fill-opacity="0.25"/><circle cx="712" cy="101" r="0.48" fill="white" fill-opacity="0.25"/><circle cx="60" cy="135" r="1.29" fill="white" fill-opacity="0.25"/><circle cx="321" cy="246" r="0.86" fill="white" fill-opacity="0.25"/><circle cx="439" cy="253" r="1.52" fill="white" fill-opacity="0.25"/><circle cx="111" cy="174" r="1.19" fill="white" fill-opacity="0.25"/><circle cx="237" cy="153" r="0.59" fill="white" fill-opacity="0.25"/><circle cx="780" cy="155" r="0.49" fill="white" fill-opacity="0.25"/><circle cx="663" cy="160" r="0.53" fill="white" fill-opacity="0.25"/>
+  
+  
+  
+  <rect x="40" y="40" width="46" height="46" rx="12" fill="white" fill-opacity="0.12"/>
+  <rect x="54" y="54" width="18" height="18" rx="4" fill="#f5a623"/>
+  <text x="40" y="382" font-family="Arial, sans-serif" font-size="14" letter-spacing="3" font-weight="700" fill="#f5a623">TALK SHOW</text>
+  <rect x="40" y="404" width="519" height="64" fill="url(#bar-podcaststudiographicskit)" fill-opacity="0.5"/>
+  <text x="40" y="448" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="white">Podcast Studio Graphics Kit</text>
+  <rect x="40" y="460" width="120" height="4" fill="#f5a623"/>
+</svg>
