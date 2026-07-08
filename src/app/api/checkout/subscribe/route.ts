@@ -51,27 +51,33 @@ export async function POST(req: Request) {
 
   const appUrl = process.env.APP_URL || process.env.NEXTAUTH_URL || "http://localhost:3000";
 
-  const checkoutSession = await stripe.checkout.sessions.create({
-    mode: "subscription",
-    customer: customerId,
-    line_items: [
-      {
-        quantity: 1,
-        price_data: {
-          currency: plan.currency,
-          unit_amount: plan.priceCents,
-          recurring: { interval: plan.interval as "month" | "year" },
-          product_data: {
-            name: plan.name,
-            description: plan.description,
+  try {
+    const checkoutSession = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      customer: customerId,
+      line_items: [
+        {
+          quantity: 1,
+          price_data: {
+            currency: plan.currency,
+            unit_amount: plan.priceCents,
+            recurring: { interval: plan.interval as "month" | "year" },
+            product_data: {
+              name: plan.name,
+              description: plan.description,
+            },
           },
         },
-      },
-    ],
-    success_url: `${appUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${appUrl}/pricing`,
-    metadata: { planId: plan.id, userId: session.user.id },
-  });
+      ],
+      success_url: `${appUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${appUrl}/pricing`,
+      metadata: { planId: plan.id, userId: session.user.id },
+    });
 
-  return NextResponse.json({ url: checkoutSession.url });
+    return NextResponse.json({ url: checkoutSession.url });
+  } catch (err) {
+    console.error("Stripe subscription checkout session creation failed:", err);
+    const message = err instanceof Error ? err.message : "Unknown Stripe error.";
+    return NextResponse.json({ error: `Stripe error: ${message}` }, { status: 502 });
+  }
 }

@@ -58,29 +58,35 @@ export async function POST() {
 
   const appUrl = process.env.APP_URL || process.env.NEXTAUTH_URL || "http://localhost:3000";
 
-  const checkoutSession = await stripe.checkout.sessions.create({
-    mode: "payment",
-    customer: customerId,
-    line_items: cartItems.map((i) => ({
-      quantity: i.quantity,
-      price_data: {
-        currency: i.product.currency,
-        unit_amount: i.product.priceCents,
-        product_data: {
-          name: i.product.title,
-          description: i.product.tagline,
+  try {
+    const checkoutSession = await stripe.checkout.sessions.create({
+      mode: "payment",
+      customer: customerId,
+      line_items: cartItems.map((i) => ({
+        quantity: i.quantity,
+        price_data: {
+          currency: i.product.currency,
+          unit_amount: i.product.priceCents,
+          product_data: {
+            name: i.product.title,
+            description: i.product.tagline,
+          },
         },
-      },
-    })),
-    success_url: `${appUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${appUrl}/cart`,
-    metadata: { orderId: order.id, userId: session.user.id },
-  });
+      })),
+      success_url: `${appUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${appUrl}/cart`,
+      metadata: { orderId: order.id, userId: session.user.id },
+    });
 
-  await prisma.order.update({
-    where: { id: order.id },
-    data: { stripeCheckoutSessionId: checkoutSession.id },
-  });
+    await prisma.order.update({
+      where: { id: order.id },
+      data: { stripeCheckoutSessionId: checkoutSession.id },
+    });
 
-  return NextResponse.json({ url: checkoutSession.url });
+    return NextResponse.json({ url: checkoutSession.url });
+  } catch (err) {
+    console.error("Stripe checkout session creation failed:", err);
+    const message = err instanceof Error ? err.message : "Unknown Stripe error.";
+    return NextResponse.json({ error: `Stripe error: ${message}` }, { status: 502 });
+  }
 }
