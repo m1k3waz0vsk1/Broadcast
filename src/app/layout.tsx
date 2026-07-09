@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { siteUrl, siteName, siteTagline, siteDescription } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +17,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BroadcastGFX — Broadcast & Event Graphics Packages",
-  description:
-    "Broadcast-quality graphic packages for webinars, livestreams, and conferences — lower thirds, overlays, countdowns, and full show packages, ready in minutes.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} — ${siteTagline}`,
+    template: `%s | ${siteName}`,
+  },
+  description: siteDescription,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName,
+    title: `${siteName} — ${siteTagline}`,
+    description: siteDescription,
+    url: siteUrl,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} — ${siteTagline}`,
+    description: siteDescription,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

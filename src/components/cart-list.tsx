@@ -77,7 +77,14 @@ export function CartList({ initialItems }: { initialItems: CartItem[] }) {
           <li key={item.productId} className="flex items-center gap-4 p-4">
             <Link href={`/products/${item.slug}`} className="h-16 w-28 flex-shrink-0 overflow-hidden rounded-lg bg-surface-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={item.coverImage} alt={item.title} className="h-full w-full object-cover" />
+              <img
+                src={item.coverImage}
+                alt={item.title}
+                width={112}
+                height={64}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
             </Link>
             <div className="min-w-0 flex-1">
               <Link href={`/products/${item.slug}`} className="font-medium hover:text-accent-2">

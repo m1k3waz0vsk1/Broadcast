@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { formatPrice } from "@/lib/format";
 import { SubscribeButton } from "@/components/subscribe-button";
 import { CheckCircle2 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Membership Pricing",
+  description:
+    "Unlimited downloads of every webinar, livestream, and conference graphics package with an All-Access Membership. Monthly and yearly plans, cancel anytime.",
+  alternates: { canonical: "/pricing" },
+};
 
 const perks = [
   "Unlimited downloads of every broadcast package",

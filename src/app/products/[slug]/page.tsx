@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
@@ -5,7 +6,42 @@ import { auth } from "@/auth";
 import { formatPrice } from "@/lib/format";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 import { ProductCard } from "@/components/product-card";
+import { JsonLd } from "@/components/json-ld";
+import { siteUrl } from "@/lib/site";
 import { CheckCircle2 } from "lucide-react";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await prisma.product.findUnique({
+    where: { slug },
+    select: { title: true, tagline: true, description: true },
+  });
+
+  if (!product) return {};
+
+  const description = product.tagline || product.description.slice(0, 155);
+
+  return {
+    title: product.title,
+    description,
+    alternates: { canonical: `/products/${slug}` },
+    openGraph: {
+      title: product.title,
+      description,
+      url: `/products/${slug}`,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.title,
+      description,
+    },
+  };
+}
 
 export default async function ProductDetailPage({
   params,
@@ -32,6 +68,27 @@ export default async function ProductDetailPage({
 
   const formats: string[] = JSON.parse(product.formats);
   const previewImages: string[] = JSON.parse(product.previewImages);
+  const absoluteImage = previewImages[0]?.startsWith("/")
+    ? `${siteUrl}${previewImages[0]}`
+    : previewImages[0];
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.description,
+    image: absoluteImage ? [absoluteImage] : undefined,
+    brand: { "@type": "Brand", name: "BroadcastGFX" },
+    category: product.category.name,
+    offers: {
+      "@type": "Offer",
+      url: `${siteUrl}/products/${product.slug}`,
+      priceCurrency: product.currency.toUpperCase(),
+      price: (product.priceCents / 100).toFixed(2),
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+    },
+  };
 
   const related = await prisma.product.findMany({
     where: { categoryId: product.categoryId, id: { not: product.id } },
@@ -41,6 +98,7 @@ export default async function ProductDetailPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <JsonLd data={productJsonLd} />
       <nav className="text-sm text-muted">
         <Link href="/products" className="hover:text-foreground">Packages</Link>
         {" / "}
@@ -53,7 +111,14 @@ export default async function ProductDetailPage({
         <div className="lg:col-span-3">
           <div className="overflow-hidden rounded-xl border border-border bg-surface">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={previewImages[0]} alt={product.title} className="w-full" />
+            <img
+              src={previewImages[0]}
+              alt={product.title}
+              width={800}
+              height={500}
+              fetchPriority="high"
+              className="w-full"
+            />
           </div>
 
           <div className="mt-10">

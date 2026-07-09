@@ -27,7 +27,14 @@ export default async function AdminProductsPage() {
               <td className="px-4 py-3">
                 <div className="flex items-center gap-3">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.coverImage} alt="" className="h-10 w-16 rounded object-cover" />
+                  <img
+                    src={p.coverImage}
+                    alt={p.title}
+                    width={64}
+                    height={40}
+                    loading="lazy"
+                    className="h-10 w-16 rounded object-cover"
+                  />
                   <div>
                     <p className="font-medium">{p.title}</p>
                     <p className="text-xs text-muted">/{p.slug}</p>

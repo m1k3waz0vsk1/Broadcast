@@ -1,7 +1,25 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/product-card";
+import { JsonLd } from "@/components/json-ld";
+import { siteUrl, siteName, siteDescription } from "@/lib/site";
 import { Radio, Download, ShieldCheck, Sparkles } from "lucide-react";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.ico`,
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: siteUrl,
+  description: siteDescription,
+};
 
 export default async function Home() {
   const [featured, categories] = await Promise.all([
@@ -18,6 +36,8 @@ export default async function Home() {
 
   return (
     <div>
+      <JsonLd data={organizationJsonLd} />
+      <JsonLd data={websiteJsonLd} />
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/20 via-transparent to-transparent" />

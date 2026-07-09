@@ -1,7 +1,33 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/product-card";
 import clsx from "clsx";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}): Promise<Metadata> {
+  const { category } = await searchParams;
+  if (!category) {
+    return {
+      title: "All Packages",
+      description:
+        "Browse every broadcast graphics package for webinars, livestreams, and conferences — lower thirds, overlays, countdowns, and full show packages.",
+      alternates: { canonical: "/products" },
+    };
+  }
+
+  const cat = await prisma.category.findUnique({ where: { slug: category } });
+  if (!cat) return { title: "All Packages", alternates: { canonical: "/products" } };
+
+  return {
+    title: cat.name,
+    description: `${cat.name} graphics packages for webinars, livestreams, and conferences — download instantly and drop into your show.`,
+    alternates: { canonical: `/products?category=${cat.slug}` },
+  };
+}
 
 export default async function ProductsPage({
   searchParams,

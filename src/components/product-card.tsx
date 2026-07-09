@@ -22,6 +22,9 @@ export function ProductCard({ product }: { product: ProductCardData }) {
         <img
           src={product.coverImage}
           alt={product.title}
+          width={800}
+          height={450}
+          loading="lazy"
           className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
         />
       </div>
